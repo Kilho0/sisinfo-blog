@@ -17,7 +17,7 @@
     <ul class="post-list">
       {% for post in post_list %}
         <li class="card post-card">
-          <span class="meta">{{ post.date|date:"d \d\e F \d\e Y" }}</span>
+          <span class="meta">{{ post.date|date:"j \d\e F \d\e Y"|lower }}</span>
           <h2><a href="{% url 'post_detail' post.pk %}">{{ post.title }}</a></h2>
           <p>{{ post.content|striptags|truncatewords:32 }}</p>
           {% if post.categories.all %}

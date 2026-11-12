@@ -1,0 +1,199 @@
+[
+  {
+    "model": "auth.user",
+    "pk": 101,
+    "fields": {
+      "username": "ana.lima",
+      "first_name": "Ana",
+      "last_name": "Lima",
+      "email": "",
+      "password": "!",
+      "is_active": true,
+      "is_staff": false,
+      "is_superuser": false,
+      "date_joined": "2026-08-01T12:00:00-03:00"
+    }
+  },
+  {
+    "model": "auth.user",
+    "pk": 102,
+    "fields": {
+      "username": "bruno.sato",
+      "first_name": "Bruno",
+      "last_name": "Sato",
+      "email": "",
+      "password": "!",
+      "is_active": true,
+      "is_staff": false,
+      "is_superuser": false,
+      "date_joined": "2026-08-01T12:00:00-03:00"
+    }
+  },
+  {
+    "model": "auth.user",
+    "pk": 103,
+    "fields": {
+      "username": "carla.mendes",
+      "first_name": "Carla",
+      "last_name": "Mendes",
+      "email": "",
+      "password": "!",
+      "is_active": true,
+      "is_staff": false,
+      "is_superuser": false,
+      "date_joined": "2026-08-01T12:00:00-03:00"
+    }
+  },
+  {
+    "model": "blog.category",
+    "pk": 1,
+    "fields": {
+      "name": "Oficinas",
+      "description": "Atividades práticas de engenharia com crianças de escolas públicas."
+    }
+  },
+  {
+    "model": "blog.category",
+    "pk": 2,
+    "fields": {
+      "name": "Educação",
+      "description": "Projetos de extensão que levam a engenharia para fora da universidade."
+    }
+  },
+  {
+    "model": "blog.category",
+    "pk": 3,
+    "fields": {
+      "name": "Eventos",
+      "description": "Semanas acadêmicas, palestras e encontros organizados pelos alunos."
+    }
+  },
+  {
+    "model": "blog.category",
+    "pk": 4,
+    "fields": {
+      "name": "Gestão estudantil",
+      "description": "Experiências de gestão em entidades estudantis da Poli-USP."
+    }
+  },
+  {
+    "model": "blog.post",
+    "pk": 1,
+    "fields": {
+      "title": "Oficinas de Brinquedos: um braço robótico hidráulico feito por crianças",
+      "content": "<p>As <strong>Oficinas Educacionais de Brinquedos</strong> levam a engenharia para crianças de escolas públicas de um jeito bem concreto: cada turma monta, do zero, um <em>braço robótico hidráulico</em> movido por seringas e mangueiras.</p>\n<h2>Como funciona</h2>\n<p>O braço usa seringas cheias de água ligadas por mangueiras. Quando a criança empurra uma seringa, a outra se move e o braço levanta, gira ou fecha a garra. É a mesma ideia de uma prensa hidráulica, só que em escala de mesa.</p>\n<ul>\n  <li>Estrutura de MDF cortada previamente;</li>\n  <li>quatro pares de seringas, um para cada movimento;</li>\n  <li>montagem em equipes de três a quatro crianças.</li>\n</ul>\n<h2>Meu papel</h2>\n<p>Atuo como organizador e monitor desde 2023. Coordeno e treino os monitores, cuido da gestão financeira e da logística dos eventos e garanto que todos os materiais estejam na bancada antes de a turma chegar.</p>\n<blockquote>Ver uma criança entender sozinha por que a garra fecha é o melhor indicador de que a oficina deu certo.</blockquote>",
+      "date": "2026-08-14T10:30:00-03:00",
+      "categories": [
+        1,
+        2
+      ]
+    }
+  },
+  {
+    "model": "blog.post",
+    "pk": 2,
+    "fields": {
+      "title": "Oficina de Carrinhos de Rolimã",
+      "content": "<p>Em paralelo à Oficina de Brinquedos, organizo as <strong>Oficinas de Carrinhos de Rolimã</strong>. O público também é formado por crianças de escolas públicas e a proposta é aprender mecânica construindo algo que, no fim do dia, dá para usar na rua.</p>\n<h2>Do projeto à descida</h2>\n<p>Cada carrinho é montado com tábuas, eixos e rolamentos. As crianças aprendem por que o eixo dianteiro precisa girar, como a direção funciona e onde ficam os pontos de maior esforço na estrutura.</p>\n<h3>Segurança em primeiro lugar</h3>\n<p>Os monitores passam por um treinamento antes de cada edição para orientar o uso das ferramentas e conferir a montagem de cada carrinho antes do primeiro teste.</p>\n<h2>Bastidores</h2>\n<p>Minha parte envolve a logística do evento, o treinamento dos monitores e a gestão financeira, para que nenhuma peça ou ferramenta falte no dia.</p>",
+      "date": "2026-09-03T14:00:00-03:00",
+      "categories": [
+        1
+      ]
+    }
+  },
+  {
+    "model": "blog.post",
+    "pk": 3,
+    "fields": {
+      "title": "SEMOV: os bastidores da maior semana acadêmica do curso",
+      "content": "<p>A <strong>SEMOV</strong>, Semana de Engenharia de Movimento, é a maior semana acadêmica do nosso curso: são mais de 700 alunos participando e cerca de 10 empresas dos setores financeiro, de consultoria e de engenharia.</p>\n<h2>O que faz a diretoria geral</h2>\n<ul>\n  <li>liderança e organização geral do evento;</li>\n  <li>prospecção e gestão de parcerias com empresas, incluindo os patrocínios;</li>\n  <li>coordenação de logística, infraestrutura e marketing;</li>\n  <li>supervisão financeira de toda a semana.</li>\n</ul>\n<h2>Antes da diretoria</h2>\n<p>Comecei na organização em outubro de 2023 como coordenador, cuidando da gestão de projetos, do treinamento das equipes administrativa e financeira e do controle de orçamentos. Hoje sou diretor geral.</p>",
+      "date": "2026-10-02T09:15:00-03:00",
+      "categories": [
+        3,
+        4
+      ]
+    }
+  },
+  {
+    "model": "blog.post",
+    "pk": 4,
+    "fields": {
+      "title": "Dois anos de gestão no Centro Acadêmico",
+      "content": "<p>Entre 2023 e 2025 fiz parte da gestão do <strong>CAM</strong>, o Centro Acadêmico de Mecânica e Mecatrônica da Poli-USP. Foram duas funções bem diferentes, e cada uma ensinou uma coisa.</p>\n<h2>Diretoria financeira</h2>\n<p>No primeiro ano, como diretor financeiro, organizei as contas e as compras da entidade. Ao final do mandato, o saldo do centro acadêmico tinha crescido 150%.</p>\n<h2>Vice-presidência</h2>\n<p>No segundo ano, como vice-presidente, coordenei sete diretorias e fiquei responsável pela contratação de fornecedores para os eventos.</p>\n<h2>O que fica</h2>\n<p>Gestão estudantil é, no fundo, um projeto de engenharia: tem requisitos, orçamento, prazo e muita gente envolvida. A diferença é que o produto final são as pessoas que participam.</p>",
+      "date": "2026-10-28T19:40:00-03:00",
+      "categories": [
+        4
+      ]
+    }
+  },
+  {
+    "model": "blog.comment",
+    "pk": 1,
+    "fields": {
+      "post": 1,
+      "author": 101,
+      "text": "Que projeto incrível! Participei como monitora na edição de julho e as crianças não queriam ir embora.",
+      "date": "2026-08-14T18:02:00-03:00"
+    }
+  },
+  {
+    "model": "blog.comment",
+    "pk": 2,
+    "fields": {
+      "post": 1,
+      "author": 102,
+      "text": "Vocês já pensaram em trocar a água por óleo? A resposta das seringas ficaria mais suave.",
+      "date": "2026-08-15T09:47:00-03:00"
+    }
+  },
+  {
+    "model": "blog.comment",
+    "pk": 3,
+    "fields": {
+      "post": 1,
+      "author": 103,
+      "text": "Adorei a citação no final. Dá para compartilhar a lista de materiais?",
+      "date": "2026-08-16T21:10:00-03:00"
+    }
+  },
+  {
+    "model": "blog.comment",
+    "pk": 4,
+    "fields": {
+      "post": 2,
+      "author": 103,
+      "text": "Lembro de descer a rampa da Poli com um desses. Ótimo trabalho!",
+      "date": "2026-09-04T11:25:00-03:00"
+    }
+  },
+  {
+    "model": "blog.comment",
+    "pk": 5,
+    "fields": {
+      "post": 2,
+      "author": 101,
+      "text": "Qual rolamento vocês usam nas rodas? Quero montar um com meu sobrinho.",
+      "date": "2026-09-05T16:40:00-03:00"
+    }
+  },
+  {
+    "model": "blog.comment",
+    "pk": 6,
+    "fields": {
+      "post": 4,
+      "author": 102,
+      "text": "Crescer o saldo em 150% não é pouca coisa. Parabéns pela gestão!",
+      "date": "2026-10-29T08:15:00-03:00"
+    }
+  },
+  {
+    "model": "blog.comment",
+    "pk": 7,
+    "fields": {
+      "post": 4,
+      "author": 103,
+      "text": "Concordo muito com a parte de que gestão estudantil é um projeto de engenharia.",
+      "date": "2026-10-30T13:05:00-03:00"
+    }
+  }
+]

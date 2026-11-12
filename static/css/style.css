@@ -554,6 +554,7 @@ a.tag:hover {
 
 .comments {
   margin-top: 56px;
+  scroll-margin-top: 90px;
 }
 
 .comments-head {
@@ -653,6 +654,14 @@ a.tag:hover {
 
   main {
     padding-top: 32px;
+  }
+
+  .site-header {
+    position: static;
+  }
+
+  .comments {
+    scroll-margin-top: 16px;
   }
 
   .brand-tag {
