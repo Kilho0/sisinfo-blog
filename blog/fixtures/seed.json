@@ -1,5 +1,50 @@
 [
   {
+    "model": "auth.user",
+    "pk": 101,
+    "fields": {
+      "username": "fulano",
+      "first_name": "Fulano",
+      "last_name": "de Tal",
+      "email": "",
+      "password": "!",
+      "is_active": true,
+      "is_staff": false,
+      "is_superuser": false,
+      "date_joined": "2026-08-01T12:00:00-03:00"
+    }
+  },
+  {
+    "model": "auth.user",
+    "pk": 102,
+    "fields": {
+      "username": "sicrano",
+      "first_name": "Sicrano",
+      "last_name": "da Silva",
+      "email": "",
+      "password": "!",
+      "is_active": true,
+      "is_staff": false,
+      "is_superuser": false,
+      "date_joined": "2026-08-01T12:00:00-03:00"
+    }
+  },
+  {
+    "model": "auth.user",
+    "pk": 103,
+    "fields": {
+      "username": "beltrano",
+      "first_name": "Beltrano",
+      "last_name": "Souza",
+      "email": "",
+      "password": "!",
+      "is_active": true,
+      "is_staff": false,
+      "is_superuser": false,
+      "date_joined": "2026-08-01T12:00:00-03:00"
+    }
+  },
+  {
     "model": "blog.category",
     "pk": 1,
     "fields": {
@@ -29,6 +74,30 @@
     "fields": {
       "name": "Gestão estudantil",
       "description": "Experiências de gestão em entidades estudantis da Poli-USP."
+    }
+  },
+  {
+    "model": "blog.category",
+    "pk": 5,
+    "fields": {
+      "name": "Pesquisa",
+      "description": "Iniciação científica e outras aventuras no laboratório."
+    }
+  },
+  {
+    "model": "blog.category",
+    "pk": 6,
+    "fields": {
+      "name": "Disciplinas",
+      "description": "Trabalhos e atividades de aula que renderam mais do que a nota."
+    }
+  },
+  {
+    "model": "blog.category",
+    "pk": 7,
+    "fields": {
+      "name": "Programação",
+      "description": "Código, sites e o que deu errado antes de dar certo."
     }
   },
   {
@@ -79,6 +148,239 @@
       "categories": [
         4
       ]
+    }
+  },
+  {
+    "model": "blog.post",
+    "pk": 5,
+    "fields": {
+      "title": "Dormir mal na Poli: minha iniciação científica sobre sono e equilíbrio",
+      "content": "<p>Todo politécnico conhece a cena: semana de provas, café às duas da manhã e aula às 7h30. Na minha <strong>iniciação científica</strong>, no Laboratório de Biomecatrônica da Poli, a pergunta é justamente essa: o quanto dormir mal atrapalha a cabeça <em>e</em> o equilíbrio?</p>\n<h2>Por que equilíbrio?</h2>\n<p>A privação de sono não afeta só a memória e a atenção. Ela também piora o <strong>controle postural</strong>, que é o que mantém a gente em pé sem perceber. Para medir isso, o laboratório usa uma <em>plataforma de força</em>, que registra as oscilações do centro de pressão dos pés. Quanto mais o corpo balança, pior o controle.</p>\n<p>Já o sono é medido por <strong>actigrafia</strong>: um sensor no pulso, parecido com um relógio, registra a atividade ao longo de dias e mostra quando a pessoa dormiu de verdade.</p>\n<h2>A primeira etapa: questionários</h2>\n<p>Antes dos experimentos, montamos uma base de dados com 50 alunos de vários cursos e anos da Poli, que responderam a cinco questionários:</p>\n<ul>\n  <li><strong>PSQI</strong>, sobre a qualidade do sono no último mês;</li>\n  <li><strong>MCTQ</strong> e <strong>MEQ</strong>, sobre o cronotipo (se a pessoa rende mais de manhã ou à noite);</li>\n  <li><strong>OMS-5</strong>, sobre bem-estar;</li>\n  <li><strong>IPAQ</strong>, sobre atividade física.</li>\n</ul>\n<p>Para não calcular tudo na mão, fiz uma planilha que gera automaticamente os componentes e os escores de cada questionário e exporta tudo em CSV.</p>\n<h2>O que apareceu até agora</h2>\n<ul>\n  <li>Nas férias, bem mais alunos relatam sono de boa qualidade do que no período de aulas. Nenhuma surpresa, mas agora tem número.</li>\n  <li>Muita gente tem um sono irregular: noites curtíssimas compensadas por outras longuíssimas, o famoso <em>jet lag social</em>.</li>\n  <li>O bem-estar varia muito, e um grupo considerável de alunos aparece com índices baixos.</li>\n</ul>\n<h2>Próximos passos</h2>\n<p>A próxima fase é a actigrafia fora e dentro do período de provas, os experimentos na plataforma de força e o processamento desses dados. Spoiler: vou precisar de voluntários com sono.</p>",
+      "date": "2026-07-10T20:30:00-03:00",
+      "categories": [
+        5
+      ]
+    }
+  },
+  {
+    "model": "blog.post",
+    "pk": 6,
+    "fields": {
+      "title": "Você é matutino, vespertino ou nem um nem outro?",
+      "content": "<p>Um dos questionários da minha IC é o <strong>MEQ</strong>, o Questionário de Matutinidade-Vespertinidade, criado por Horne e Östberg. São 19 perguntas sobre que horas você gostaria de dormir, acordar, fazer prova ou ir para a academia. A soma das respostas vai de 16 a 86:</p>\n<ul>\n  <li><strong>16 a 30</strong>: definitivamente vespertino;</li>\n  <li><strong>31 a 41</strong>: vespertino moderado;</li>\n  <li><strong>42 a 58</strong>: intermediário;</li>\n  <li><strong>59 a 69</strong>: matutino moderado;</li>\n  <li><strong>70 a 86</strong>: definitivamente matutino.</li>\n</ul>\n<h2>E os politécnicos?</h2>\n<p>Na nossa amostra, <strong>66,7%</strong> dos alunos deram intermediário. Depois vieram os matutinos moderados (16,7%) e os vespertinos moderados (10,4%). Os extremos são raros: 4,2% definitivamente matutinos e só 2,1% definitivamente vespertinos.</p>\n<blockquote>Ou seja: quase ninguém nasceu para a aula das 7h30, mas também quase ninguém é coruja de verdade. A gente só se adapta.</blockquote>\n<p>O resultado reforça uma ideia simples: horários um pouco mais flexíveis para atividades que exigem muita concentração ajudariam bastante gente a render no seu melhor momento do dia.</p>",
+      "date": "2026-07-24T08:10:00-03:00",
+      "categories": [
+        5
+      ]
+    }
+  },
+  {
+    "model": "blog.post",
+    "pk": 7,
+    "fields": {
+      "title": "Filtro de Kalman na prática: limpando a posição de um navio",
+      "content": "<p>Em Instrumentação, uma das atividades em grupo foi reproduzir no <strong>Octave</strong> o filtro de Kalman linear visto em aula. O sinal era a posição de um navio no movimento de <em>surge</em>, o avanço para frente e para trás, medida com ruído.</p>\n<h2>O modelo</h2>\n<p>A dinâmica é a de uma massa com amortecimento empurrada por uma força:</p>\n<p><code>m·x'' + b·x' = F</code></p>\n<p>com massa de cerca de 1,07 × 10<sup>8</sup> kg, ou seja, um navio bem grande. Os estados são posição e velocidade, a entrada é a força e a medida é só a posição. Discretizamos por Euler explícito com passo de 0,1 s.</p>\n<h2>Escolhendo Q e R</h2>\n<ul>\n  <li><strong>R</strong>, o ruído da medição, foi estimado tirando do sinal uma tendência lenta (média móvel de uns 50 s) e calculando a variância do que sobrou.</li>\n  <li><strong>Q</strong>, a incerteza do modelo, começou bem pequena: 10<sup>-8</sup> na diagonal.</li>\n</ul>\n<h2>O que dá para aprender</h2>\n<p>A parte mais legal foi variar <strong>Q</strong>. Com Q pequeno, o filtro confia muito no modelo: a curva fica lisinha, mas atrasa em relação ao sinal real. Aumentando Q, o filtro passa a confiar mais na medida, o atraso some e o ruído volta junto. Não existe almoço grátis, só compromisso.</p>",
+      "date": "2026-10-15T22:05:00-03:00",
+      "categories": [
+        6,
+        7
+      ]
+    }
+  },
+  {
+    "model": "blog.post",
+    "pk": 8,
+    "fields": {
+      "title": "Fazendo o site do centro acadêmico",
+      "content": "<p>O <strong>Portal CAM</strong> nasceu para ser o ponto central de comunicação e da memória dos alunos de Mecânica e Mecatrônica da Poli. A primeira versão é um site estático, em HTML, CSS e JavaScript, com as cores do centro acadêmico.</p>\n<h2>Detalhes que deram trabalho</h2>\n<ul>\n  <li><strong>Idade do CAM:</strong> um script calcula quantos anos o centro acadêmico tem desde a fundação, em 22 de setembro de 1987, descontando um ano se o aniversário ainda não chegou.</li>\n  <li><strong>Menu de celular:</strong> o menu \"hambúrguer\" funciona só com CSS, usando um checkbox escondido.</li>\n  <li><strong>Acervo histórico:</strong> uma página com jornais antigos do CAM, com fundo próprio e links que parecem botões.</li>\n</ul>\n<h2>Erros clássicos de quem publica o primeiro site</h2>\n<ul>\n  <li>Caminho de imagem apontando para <code>C:/Users/...</code>, que obviamente só funcionava no meu computador;</li>\n  <li>arquivos com maiúscula, espaço ou acento no nome, que funcionavam no Windows e quebravam no servidor Linux, que diferencia maiúscula de minúscula;</li>\n  <li>e o cache do navegador escondendo cada alteração. Ctrl+F5 virou reflexo.</li>\n</ul>\n<p>O próximo passo é transformar o portal em algo dinâmico, com eventos e gincanas. Mas isso fica para outro post.</p>",
+      "date": "2026-11-05T18:45:00-03:00",
+      "categories": [
+        7,
+        4
+      ]
+    }
+  },
+  {
+    "model": "blog.post",
+    "pk": 9,
+    "fields": {
+      "title": "Como este blog foi feito",
+      "content": "<p>Este blog é a segunda entrega de laboratório de Sistemas de Informação: uma aplicação <strong>CRUD em Django</strong>, sem nenhuma extensão.</p>\n<h2>As três versões das views</h2>\n<p>O CRUD de posts foi escrito três vezes, cada uma em um commit:</p>\n<ol>\n  <li>views em função, lendo direto do <code>request.POST</code>, sem formulário nem validação;</li>\n  <li>views em função com um <code>ModelForm</code>, que valida os dados;</li>\n  <li>views com as classes genéricas <code>ListView</code>, <code>DetailView</code>, <code>CreateView</code>, <code>UpdateView</code> e <code>DeleteView</code>.</li>\n</ol>\n<p>A terceira versão tem menos linhas do que a primeira e faz mais coisas. É o tipo de coisa que dá vontade de voltar no tempo e refatorar tudo que já escrevi.</p>\n<h2>Comentários e categorias</h2>\n<p>Depois vieram os comentários, numa branch própria, e as categorias, em outra. Cada post pode estar em várias categorias, e a página de uma categoria reaproveita o mesmo template da lista de posts.</p>\n<h2>O visual</h2>\n<p>O fundo quadriculado é uma homenagem aos cadernos de engenharia. O bordô é só porque fica bonito.</p>",
+      "date": "2026-11-12T10:00:00-03:00",
+      "categories": [
+        7,
+        6
+      ]
+    }
+  },
+  {
+    "model": "blog.comment",
+    "pk": 1,
+    "fields": {
+      "post": 1,
+      "author": 101,
+      "text": "Que projeto massa! Na minha época de escola o máximo que a gente fazia era vulcão de bicarbonato.",
+      "date": "2026-08-14T18:02:00-03:00"
+    }
+  },
+  {
+    "model": "blog.comment",
+    "pk": 2,
+    "fields": {
+      "post": 1,
+      "author": 102,
+      "text": "Vocês já pensaram em trocar a água por óleo? Acho que o braço ficaria mais suave.",
+      "date": "2026-08-15T09:47:00-03:00"
+    }
+  },
+  {
+    "model": "blog.comment",
+    "pk": 3,
+    "fields": {
+      "post": 1,
+      "author": 103,
+      "text": "Quero um braço desses para pegar o controle da TV sem levantar do sofá.",
+      "date": "2026-08-16T21:10:00-03:00"
+    }
+  },
+  {
+    "model": "blog.comment",
+    "pk": 4,
+    "fields": {
+      "post": 2,
+      "author": 103,
+      "text": "Carrinho de rolimã é patrimônio cultural. Ótimo trabalho!",
+      "date": "2026-09-04T11:25:00-03:00"
+    }
+  },
+  {
+    "model": "blog.comment",
+    "pk": 5,
+    "fields": {
+      "post": 2,
+      "author": 101,
+      "text": "Fica a sugestão: uma corrida de carrinhos entre os monitores no final da oficina.",
+      "date": "2026-09-05T16:40:00-03:00"
+    }
+  },
+  {
+    "model": "blog.comment",
+    "pk": 6,
+    "fields": {
+      "post": 4,
+      "author": 102,
+      "text": "Aumentar o saldo em 150% não é pouca coisa. Parabéns pela gestão!",
+      "date": "2026-10-29T08:15:00-03:00"
+    }
+  },
+  {
+    "model": "blog.comment",
+    "pk": 7,
+    "fields": {
+      "post": 4,
+      "author": 101,
+      "text": "Concordo que gestão estudantil é um projeto de engenharia. Só que sem manual.",
+      "date": "2026-10-30T13:05:00-03:00"
+    }
+  },
+  {
+    "model": "blog.comment",
+    "pk": 8,
+    "fields": {
+      "post": 5,
+      "author": 102,
+      "text": "Li este post às duas da manhã. Acho que eu sou o público-alvo.",
+      "date": "2026-07-11T02:13:00-03:00"
+    }
+  },
+  {
+    "model": "blog.comment",
+    "pk": 9,
+    "fields": {
+      "post": 5,
+      "author": 103,
+      "text": "Topo ser voluntário, desde que o experimento seja depois das 10h.",
+      "date": "2026-07-11T09:30:00-03:00"
+    }
+  },
+  {
+    "model": "blog.comment",
+    "pk": 10,
+    "fields": {
+      "post": 5,
+      "author": 101,
+      "text": "Muito interessante a parte do equilíbrio. Nunca tinha pensado que sono afetava isso.",
+      "date": "2026-07-12T15:48:00-03:00"
+    }
+  },
+  {
+    "model": "blog.comment",
+    "pk": 11,
+    "fields": {
+      "post": 7,
+      "author": 103,
+      "text": "Finalmente uma explicação de Q e R que eu entendi.",
+      "date": "2026-10-16T10:20:00-03:00"
+    }
+  },
+  {
+    "model": "blog.comment",
+    "pk": 12,
+    "fields": {
+      "post": 7,
+      "author": 102,
+      "text": "Um navio de cem milhões de quilos e eu aqui com dificuldade para estacionar o carro.",
+      "date": "2026-10-17T19:02:00-03:00"
+    }
+  },
+  {
+    "model": "blog.comment",
+    "pk": 13,
+    "fields": {
+      "post": 8,
+      "author": 101,
+      "text": "O erro do C:/Users/ eu já cometi também. Todo mundo comete uma vez.",
+      "date": "2026-11-06T12:00:00-03:00"
+    }
+  },
+  {
+    "model": "blog.comment",
+    "pk": 14,
+    "fields": {
+      "post": 8,
+      "author": 103,
+      "text": "Ansioso para a versão com as gincanas!",
+      "date": "2026-11-07T17:35:00-03:00"
+    }
+  },
+  {
+    "model": "blog.comment",
+    "pk": 15,
+    "fields": {
+      "post": 9,
+      "author": 102,
+      "text": "Gostei do quadriculado. Parece mesmo caderno de Cálculo.",
+      "date": "2026-11-12T11:15:00-03:00"
+    }
+  },
+  {
+    "model": "blog.comment",
+    "pk": 16,
+    "fields": {
+      "post": 9,
+      "author": 101,
+      "text": "Um post no blog explicando como o blog foi feito. Metalinguagem pura.",
+      "date": "2026-11-12T13:40:00-03:00"
+    }
+  },
+  {
+    "model": "blog.comment",
+    "pk": 17,
+    "fields": {
+      "post": 9,
+      "author": 103,
+      "text": "Ficou muito bom. Já pode fazer o meu também?",
+      "date": "2026-11-12T14:05:00-03:00"
     }
   }
 ]

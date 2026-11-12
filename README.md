@@ -60,14 +60,19 @@ O site fica em http://127.0.0.1:8000 e o administrador em http://127.0.0.1:8000/
 
 ## Dados de exemplo e consultas SQL
 
-A fixture `blog/fixtures/seed.json` cria 4 posts e 4 categorias. Os comentários são feitos pelo próprio site.
+A fixture `blog/fixtures/seed.json` cria 9 posts, 7 categorias e 17 comentários. Os comentários são de três usuários de teste, Fulano, Sicrano e Beltrano, que não têm senha utilizável.
 
-| Post | Categorias |
-|---|---|
-| Oficinas de Brinquedos | Oficinas, Educação |
-| Oficina de Carrinhos de Rolimã | Oficinas |
-| SEMOV | Eventos, Gestão estudantil |
-| Dois anos de gestão no Centro Acadêmico | Gestão estudantil |
+| Post | Categorias | Comentários |
+|---|---|---|
+| Oficinas de Brinquedos | Oficinas, Educação | 3 |
+| Oficina de Carrinhos de Rolimã | Oficinas | 2 |
+| SEMOV | Eventos, Gestão estudantil | 0 |
+| Dois anos de gestão no Centro Acadêmico | Gestão estudantil | 2 |
+| Dormir mal na Poli (iniciação científica) | Pesquisa | 3 |
+| Você é matutino, vespertino ou nem um nem outro? | Pesquisa | 0 |
+| Filtro de Kalman na prática | Disciplinas, Programação | 2 |
+| Fazendo o site do centro acadêmico | Programação, Gestão estudantil | 2 |
+| Como este blog foi feito | Programação, Disciplinas | 3 |
 
 As consultas da parte 4 estão em [`sql/consultas.sql`](sql/consultas.sql). O SQLite guarda as datas em UTC, por isso elas aparecem 3 horas à frente do horário de Brasília.
 

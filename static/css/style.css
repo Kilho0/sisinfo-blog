@@ -367,6 +367,14 @@ a.tag:hover {
   font-style: italic;
 }
 
+.prose code {
+  font-family: var(--font-mono);
+  font-size: 0.86em;
+  padding: 1px 6px;
+  border-radius: 4px;
+  background: var(--accent-soft);
+}
+
 .prose li + li {
   margin-top: 4px;
 }
