@@ -1,4 +1,4 @@
-# Bancada: blog e portfólio em Django
+# Arquivo Kilho: blog e portfólio em Django
 
 Aplicação CRUD em Django feita para a segunda entrega de laboratório da disciplina de Sistemas de Informação da Poli-USP. O site é um blog e portfólio com posts, comentários e categorias, e não usa nenhuma extensão do Django.
 

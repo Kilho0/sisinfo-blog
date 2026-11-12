@@ -1,18 +1,18 @@
-/* Bancada: caderno de engenharia em papel quadriculado */
+/* Arquivo Kilho: caderno quadriculado com detalhes em bordô */
 
 :root {
-  --paper: #f6f3ec;
-  --paper-raised: #fffdf8;
-  --grid: rgba(40, 60, 90, 0.07);
-  --ink: #1d2230;
-  --ink-soft: #545b6b;
-  --ink-faint: #8a8f9b;
-  --rule: #ddd6c8;
-  --accent: #e2551b;
+  --paper: #f7f2ee;
+  --paper-raised: #fffcfa;
+  --grid: rgba(110, 30, 45, 0.06);
+  --ink: #26191c;
+  --ink-soft: #5e4f52;
+  --ink-faint: #94878a;
+  --rule: #e2d4d0;
+  --accent: #7b1e30;
   --accent-ink: #ffffff;
-  --accent-soft: #fbe3d6;
-  --danger: #b42318;
-  --danger-soft: #fde4e1;
+  --accent-soft: #f2dde0;
+  --danger: #c2410c;
+  --danger-soft: #fde8dc;
   --ok-soft: #e0f0e3;
   --ok-ink: #1f5f2e;
   --shadow: 0 1px 0 rgba(29, 34, 48, 0.06), 0 8px 24px -12px rgba(29, 34, 48, 0.18);
@@ -24,18 +24,18 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --paper: #14171f;
-    --paper-raised: #1c2029;
-    --grid: rgba(160, 180, 220, 0.05);
-    --ink: #ebe7de;
-    --ink-soft: #b3b0a8;
-    --ink-faint: #7d7b76;
-    --rule: #2f3440;
-    --accent: #ff7a3d;
-    --accent-ink: #1a0d05;
-    --accent-soft: #3a2114;
-    --danger: #ff8a7a;
-    --danger-soft: #3b1a17;
+    --paper: #181214;
+    --paper-raised: #221a1c;
+    --grid: rgba(230, 150, 165, 0.05);
+    --ink: #f0e6e7;
+    --ink-soft: #bfaeb1;
+    --ink-faint: #85777a;
+    --rule: #3a2c30;
+    --accent: #e58b9c;
+    --accent-ink: #2a0b12;
+    --accent-soft: #42222a;
+    --danger: #ff9d6e;
+    --danger-soft: #3b2117;
     --ok-soft: #173222;
     --ok-ink: #9be0ae;
     --shadow: 0 1px 0 rgba(0, 0, 0, 0.3), 0 8px 24px -12px rgba(0, 0, 0, 0.6);
@@ -117,14 +117,6 @@ a {
 .brand-mark::after {
   content: '.';
   color: var(--accent);
-}
-
-.brand-tag {
-  font-family: var(--font-mono);
-  font-size: 0.72rem;
-  color: var(--ink-faint);
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
 }
 
 .site-nav {
@@ -662,10 +654,6 @@ a.tag:hover {
 
   .comments {
     scroll-margin-top: 16px;
-  }
-
-  .brand-tag {
-    display: none;
   }
 
   .post-card {
