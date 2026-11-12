@@ -1,5 +1,4 @@
--- Consultas da parte 4, executadas sobre o db.sqlite3 populado com a fixture
--- blog/fixtures/seed.json.
+-- Consultas da parte 4, executadas sobre o db.sqlite3 entregue no Moodle.
 --
 -- Tabelas criadas pelo Django:
 --   blog_post             (id, title, content, date)
@@ -12,12 +11,12 @@ SELECT *
 FROM blog_post
 ORDER BY date DESC;
 
--- 2. Todos os comentários de um post com comentários (post 1).
+-- 2. Todos os comentários de um post com comentários (troque o 1 pelo id do post).
 SELECT *
 FROM blog_comment
 WHERE post_id = 1;
 
--- 3. Comentários do post 1 com todas as colunas da tabela de comentários
+-- 3. Comentários de um post com todas as colunas da tabela de comentários
 --    (menos post_id), o título do post e a data dele renomeada para post_date.
 SELECT c.id,
        c.text,

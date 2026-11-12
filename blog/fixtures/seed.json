@@ -1,50 +1,5 @@
 [
   {
-    "model": "auth.user",
-    "pk": 101,
-    "fields": {
-      "username": "ana.lima",
-      "first_name": "Ana",
-      "last_name": "Lima",
-      "email": "",
-      "password": "!",
-      "is_active": true,
-      "is_staff": false,
-      "is_superuser": false,
-      "date_joined": "2026-08-01T12:00:00-03:00"
-    }
-  },
-  {
-    "model": "auth.user",
-    "pk": 102,
-    "fields": {
-      "username": "bruno.sato",
-      "first_name": "Bruno",
-      "last_name": "Sato",
-      "email": "",
-      "password": "!",
-      "is_active": true,
-      "is_staff": false,
-      "is_superuser": false,
-      "date_joined": "2026-08-01T12:00:00-03:00"
-    }
-  },
-  {
-    "model": "auth.user",
-    "pk": 103,
-    "fields": {
-      "username": "carla.mendes",
-      "first_name": "Carla",
-      "last_name": "Mendes",
-      "email": "",
-      "password": "!",
-      "is_active": true,
-      "is_staff": false,
-      "is_superuser": false,
-      "date_joined": "2026-08-01T12:00:00-03:00"
-    }
-  },
-  {
     "model": "blog.category",
     "pk": 1,
     "fields": {
@@ -124,76 +79,6 @@
       "categories": [
         4
       ]
-    }
-  },
-  {
-    "model": "blog.comment",
-    "pk": 1,
-    "fields": {
-      "post": 1,
-      "author": 101,
-      "text": "Que projeto incrível! Participei como monitora na edição de julho e as crianças não queriam ir embora.",
-      "date": "2026-08-14T18:02:00-03:00"
-    }
-  },
-  {
-    "model": "blog.comment",
-    "pk": 2,
-    "fields": {
-      "post": 1,
-      "author": 102,
-      "text": "Vocês já pensaram em trocar a água por óleo? A resposta das seringas ficaria mais suave.",
-      "date": "2026-08-15T09:47:00-03:00"
-    }
-  },
-  {
-    "model": "blog.comment",
-    "pk": 3,
-    "fields": {
-      "post": 1,
-      "author": 103,
-      "text": "Adorei a citação no final. Dá para compartilhar a lista de materiais?",
-      "date": "2026-08-16T21:10:00-03:00"
-    }
-  },
-  {
-    "model": "blog.comment",
-    "pk": 4,
-    "fields": {
-      "post": 2,
-      "author": 103,
-      "text": "Lembro de descer a rampa da Poli com um desses. Ótimo trabalho!",
-      "date": "2026-09-04T11:25:00-03:00"
-    }
-  },
-  {
-    "model": "blog.comment",
-    "pk": 5,
-    "fields": {
-      "post": 2,
-      "author": 101,
-      "text": "Qual rolamento vocês usam nas rodas? Quero montar um com meu sobrinho.",
-      "date": "2026-09-05T16:40:00-03:00"
-    }
-  },
-  {
-    "model": "blog.comment",
-    "pk": 6,
-    "fields": {
-      "post": 4,
-      "author": 102,
-      "text": "Crescer o saldo em 150% não é pouca coisa. Parabéns pela gestão!",
-      "date": "2026-10-29T08:15:00-03:00"
-    }
-  },
-  {
-    "model": "blog.comment",
-    "pk": 7,
-    "fields": {
-      "post": 4,
-      "author": 103,
-      "text": "Concordo muito com a parte de que gestão estudantil é um projeto de engenharia.",
-      "date": "2026-10-30T13:05:00-03:00"
     }
   }
 ]
