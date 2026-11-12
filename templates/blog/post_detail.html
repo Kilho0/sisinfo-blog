@@ -8,6 +8,13 @@
       <p class="eyebrow"><a href="{% url 'post_list' %}">← Todos os posts</a></p>
       <h1 class="page-title">{{ post.title }}</h1>
       <span class="meta">Publicado em {{ post.date|date:"d/m/Y \à\s H:i" }}</span>
+      {% if post.categories.all %}
+        <ul class="tags" aria-label="Categorias">
+          {% for cat in post.categories.all %}
+            <li><a class="tag" href="{% url 'category_detail' cat.pk %}">{{ cat.name }}</a></li>
+          {% endfor %}
+        </ul>
+      {% endif %}
     </header>
 
     <div class="card prose">

@@ -1,11 +1,17 @@
 {% extends 'base.html' %}
 
-{% block title %}Posts{% endblock %}
+{% block title %}{% if category %}{{ category.name }}{% else %}Posts{% endif %}{% endblock %}
 
 {% block content %}
-  <p class="eyebrow">Portfólio e blog</p>
-  <h1 class="page-title">Projetos, oficinas e o que aprendi pelo caminho</h1>
-  <p class="page-lead">Registro dos projetos práticos, eventos e da gestão estudantil que fazem parte da minha formação em Engenharia Mecatrônica.</p>
+  {% if category %}
+    <p class="eyebrow"><a href="{% url 'category_list' %}">← Categorias</a></p>
+    <h1 class="page-title">{{ category.name }}</h1>
+    <p class="page-lead">{{ category.description|default:"Posts desta categoria." }}</p>
+  {% else %}
+    <p class="eyebrow">Portfólio e blog</p>
+    <h1 class="page-title">Projetos, oficinas e o que aprendi pelo caminho</h1>
+    <p class="page-lead">Registro dos projetos práticos, eventos e da gestão estudantil que fazem parte da minha formação em Engenharia Mecatrônica.</p>
+  {% endif %}
 
   {% if post_list %}
     <ul class="post-list">
@@ -14,13 +20,24 @@
           <span class="meta">{{ post.date|date:"d \d\e F \d\e Y" }}</span>
           <h2><a href="{% url 'post_detail' post.pk %}">{{ post.title }}</a></h2>
           <p>{{ post.content|striptags|truncatewords:32 }}</p>
+          {% if post.categories.all %}
+            <ul class="tags">
+              {% for cat in post.categories.all %}
+                <li><a class="tag" href="{% url 'category_detail' cat.pk %}">{{ cat.name }}</a></li>
+              {% endfor %}
+            </ul>
+          {% endif %}
         </li>
       {% endfor %}
     </ul>
   {% else %}
     <div class="card empty">
-      <p>Nenhum post publicado ainda.</p>
-      <p><a class="btn btn-primary" href="{% url 'post_create' %}">Escrever o primeiro post</a></p>
+      {% if category %}
+        <p>Nenhum post nesta categoria ainda.</p>
+      {% else %}
+        <p>Nenhum post publicado ainda.</p>
+        <p><a class="btn btn-primary" href="{% url 'post_create' %}">Escrever o primeiro post</a></p>
+      {% endif %}
     </div>
   {% endif %}
 {% endblock %}
