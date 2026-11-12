@@ -19,4 +19,41 @@
       <a class="btn btn-ghost-danger" href="{% url 'post_delete' post.pk %}">Remover post</a>
     </div>
   </article>
+
+  <section class="comments" id="comentarios">
+    <div class="comments-head">
+      <h2>Comentários <span class="meta">({{ comment_list|length }})</span></h2>
+      <a class="btn" href="{% url 'comment_create' post.pk %}">Escrever comentário</a>
+    </div>
+
+    {% if comment_list %}
+      <ul class="comment-list">
+        {% for comment in comment_list %}
+          <li class="card comment">
+            <span class="avatar" aria-hidden="true">{{ comment.author.username|first }}</span>
+            <div>
+              <span class="comment-author">{{ comment.author.get_full_name|default:comment.author.username }}</span>
+              <span class="meta"> · {{ comment.date|date:"d/m/Y \à\s H:i" }}</span>
+              <p>{{ comment.text }}</p>
+            </div>
+          </li>
+        {% endfor %}
+      </ul>
+    {% else %}
+      <p class="card empty">Ainda não há comentários. Seja a primeira pessoa a comentar.</p>
+    {% endif %}
+
+    {% if user.is_authenticated %}
+      <form class="card comment-form" method="post" action="{% url 'comment_create' post.pk %}">
+        {% csrf_token %}
+        <div class="field">
+          <label for="{{ comment_form.text.id_for_label }}">Comentar como {{ user.username }}</label>
+          {{ comment_form.text }}
+        </div>
+        <button class="btn btn-primary" type="submit">Publicar comentário</button>
+      </form>
+    {% else %}
+      <p class="meta"><a href="{% url 'login' %}?next={{ request.path|urlencode }}%23comentarios">Entre</a> para comentar.</p>
+    {% endif %}
+  </section>
 {% endblock %}
