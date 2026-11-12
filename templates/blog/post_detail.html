@@ -7,7 +7,7 @@
     <header class="post-header">
       <p class="eyebrow"><a href="{% url 'post_list' %}">← Todos os posts</a></p>
       <h1 class="page-title">{{ post.title }}</h1>
-      <span class="meta">Publicado em {{ post.date|date:"d/m/Y \à\s H:i" }}</span>
+      <span class="meta">Publicado em {{ post.date|date:"d/m/Y \à\s H:i" }}{% if post.author %} por {{ post.author.get_full_name|default:post.author.username }}{% endif %}</span>
       {% if post.categories.all %}
         <ul class="tags" aria-label="Categorias">
           {% for cat in post.categories.all %}
@@ -21,10 +21,12 @@
       {{ post.content|safe }}
     </div>
 
-    <div class="actions">
-      <a class="btn" href="{% url 'post_update' post.pk %}">Editar post</a>
-      <a class="btn btn-ghost-danger" href="{% url 'post_delete' post.pk %}">Remover post</a>
-    </div>
+    {% if can_change %}
+      <div class="actions">
+        <a class="btn" href="{% url 'post_update' post.pk %}">Editar post</a>
+        <a class="btn btn-ghost-danger" href="{% url 'post_delete' post.pk %}">Remover post</a>
+      </div>
+    {% endif %}
   </article>
 
   <section class="comments" id="comentarios">

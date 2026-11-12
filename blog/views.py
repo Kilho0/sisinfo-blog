@@ -1,4 +1,4 @@
-from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.db.models import Count
 from django.shortcuts import get_object_or_404
 from django.urls import reverse, reverse_lazy
@@ -28,6 +28,7 @@ class PostDetailView(DetailView):
         context = super().get_context_data(**kwargs)
         context['comment_list'] = self.object.comments.select_related('author')
         context['comment_form'] = CommentForm()
+        context['can_change'] = self.object.can_be_changed_by(self.request.user)
         return context
 
 
@@ -35,13 +36,24 @@ class PostCreateView(LoginRequiredMixin, CreateView):
     model = Post
     form_class = PostForm
 
+    def form_valid(self, form):
+        form.instance.author = self.request.user
+        return super().form_valid(form)
 
-class PostUpdateView(LoginRequiredMixin, UpdateView):
+
+class AuthorOrSuperuserMixin(LoginRequiredMixin, UserPassesTestMixin):
+    """Exige login e só deixa passar o autor do post ou um superusuário."""
+
+    def test_func(self):
+        return self.get_object().can_be_changed_by(self.request.user)
+
+
+class PostUpdateView(AuthorOrSuperuserMixin, UpdateView):
     model = Post
     form_class = PostForm
 
 
-class PostDeleteView(LoginRequiredMixin, DeleteView):
+class PostDeleteView(AuthorOrSuperuserMixin, DeleteView):
     model = Post
     success_url = reverse_lazy('post_list')
 

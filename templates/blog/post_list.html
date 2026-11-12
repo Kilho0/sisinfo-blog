@@ -36,7 +36,9 @@
         <p>Nenhum post nesta categoria ainda.</p>
       {% else %}
         <p>Nenhum post publicado ainda.</p>
-        <p><a class="btn btn-primary" href="{% url 'post_create' %}">Escrever o primeiro post</a></p>
+        {% if user.is_authenticated %}
+          <p><a class="btn btn-primary" href="{% url 'post_create' %}">Escrever o primeiro post</a></p>
+        {% endif %}
       {% endif %}
     </div>
   {% endif %}

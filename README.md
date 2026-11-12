@@ -17,11 +17,11 @@ Aplicação CRUD em Django feita para a segunda entrega de laboratório da disci
 | Entrar / sair | `/contas/login/`, `/contas/logout/` | `login`, `logout` |
 | Administrador | `/admin/` | `admin:index` |
 
-Qualquer pessoa pode ler os posts. Criar, editar e remover posts e comentar exige login. As contas são criadas pelo administrador do Django.
+Qualquer pessoa pode ler os posts. Criar posts e comentar exige login. Editar e remover um post só é permitido ao autor dele ou a um superusuário; para os demais, os botões nem aparecem e o acesso direto à URL responde 403. As contas são criadas pelo administrador do Django.
 
 ## Modelos
 
-- `Post`: `title`, `content` (HTML, exibido com o filtro `safe`), `date` (`DateTimeField`) e `categories` (muitos para muitos com `Category`).
+- `Post`: `title`, `content` (HTML, exibido com o filtro `safe`), `date` (`DateTimeField`), `author` (quem criou o post) e `categories` (muitos para muitos com `Category`).
 - `Comment`: `post`, `author` (referência a `settings.AUTH_USER_MODEL`), `text` e `date`. Os comentários aparecem do mais recente para o mais antigo.
 - `Category`: `name` e `description`.
 

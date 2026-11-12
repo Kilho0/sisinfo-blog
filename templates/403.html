@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block title %}Sem permissão{% endblock %}
+
+{% block content %}
+  <div class="card confirm-card">
+    <p class="eyebrow">Erro 403</p>
+    <h1>Esse post não é seu</h1>
+    <p>Só quem escreveu o post ou um administrador pode editá-lo ou removê-lo.</p>
+    <div class="actions">
+      <a class="btn" href="{% url 'post_list' %}">Voltar para os posts</a>
+    </div>
+  </div>
+{% endblock %}

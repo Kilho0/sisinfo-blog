@@ -27,6 +27,14 @@ class Post(models.Model):
         help_text='O conteúdo é salvo como HTML.',
     )
     date = models.DateTimeField('data de postagem', default=timezone.now)
+    author = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
+        related_name='posts',
+        verbose_name='autor',
+    )
     categories = models.ManyToManyField(
         Category,
         related_name='posts',
@@ -44,6 +52,12 @@ class Post(models.Model):
 
     def get_absolute_url(self):
         return reverse('post_detail', args=[self.pk])
+
+    def can_be_changed_by(self, user):
+        """Só o autor do post ou um superusuário podem editar ou remover."""
+        return user.is_authenticated and (
+            user.is_superuser or self.author_id == user.pk
+        )
 
 
 class Comment(models.Model):
