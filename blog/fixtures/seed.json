@@ -214,6 +214,18 @@
     }
   },
   {
+    "model": "blog.post",
+    "pk": 10,
+    "fields": {
+      "title": "Seis meses na comunicação do Grêmio Politécnico",
+      "content": "<p>Em 2024, fui <strong>diretor de Comunicação do Grêmio Politécnico</strong> por uns seis meses, na gestão da chapa <em>Revoada</em>. O Grêmio é a entidade que representa todos os alunos da Poli, então comunicar ali significa falar com milhares de pessoas que estão sempre atrasadas para alguma coisa.</p>\n<h2>O desafio</h2>\n<p>Informação na Poli não falta, sobra. Prazo de rematrícula, evento, edital de bolsa, aviso de prova: tudo chega ao mesmo tempo, por canais diferentes. A ideia da diretoria era coordenar as postagens para não afogar ninguém em mensagem.</p>\n<h2>Os canais</h2>\n<ul>\n  <li><strong>Instagram e WhatsApp</strong> como foco principal, com grupos de informes acadêmicos e de permanência para avisar de prazos;</li>\n  <li><strong>X e TikTok</strong> para avisos rápidos e vídeos sobre os projetos;</li>\n  <li><strong>YouTube</strong> com as gravações dos eventos do ano;</li>\n  <li><strong>LinkedIn</strong> com conteúdo para aproximar os politécnicos do mercado de trabalho;</li>\n  <li>e o bom e velho <strong>mural</strong>, com folhetos e banners pelo campus.</li>\n</ul>\n<h2>Os projetos</h2>\n<h3>Boletim informativo</h3>\n<p>Um calendário semanal com os eventos da Poli: nome, horário, duração e um resumo curto, publicado nas redes e nos murais.</p>\n<h3>WikiPoli</h3>\n<p>Um site no estilo da Wikipédia, criado pelo Grêmio na pandemia, que junta verbetes sobre vida acadêmica, permanência, grupos de extensão, centros acadêmicos e coletivos. Qualquer aluno pode sugerir edições por um formulário. O foco era divulgar para os ingressantes, que são quem mais precisa.</p>\n<h3>Drive do Grêmio</h3>\n<p>O famoso acervo de provas antigas, que também guarda manuais, jornais dos centros acadêmicos e contatos úteis. A missão era organizar tudo para que achar um arquivo não virasse uma gincana.</p>\n<h2>O que eu levei disso</h2>\n<p>Comunicação não é só divulgar: é ouvir também. Formulários, rodas de conversa e o retorno dos alunos diziam muito mais sobre o que funcionava do que o número de curtidas. Muito do que aprendi ali voltou depois, na vice-presidência do CAM e no Portal CAM.</p>",
+      "date": "2026-06-18T17:20:00-03:00",
+      "categories": [
+        4
+      ]
+    }
+  },
+  {
     "model": "blog.comment",
     "pk": 1,
     "fields": {
@@ -381,6 +393,26 @@
       "author": 103,
       "text": "Ficou muito bom. Já pode fazer o meu também?",
       "date": "2026-11-12T14:05:00-03:00"
+    }
+  },
+  {
+    "model": "blog.comment",
+    "pk": 18,
+    "fields": {
+      "post": 10,
+      "author": 101,
+      "text": "Eu era o aluno que silenciava todos os grupos e depois perdia o prazo. Desculpa.",
+      "date": "2026-06-18T19:02:00-03:00"
+    }
+  },
+  {
+    "model": "blog.comment",
+    "pk": 19,
+    "fields": {
+      "post": 10,
+      "author": 103,
+      "text": "O Drive do Grêmio salvou minha vida em Cálculo II. Obrigado a quem organizou!",
+      "date": "2026-06-19T10:44:00-03:00"
     }
   }
 ]

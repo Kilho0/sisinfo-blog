@@ -60,7 +60,7 @@ O site fica em http://127.0.0.1:8000 e o administrador em http://127.0.0.1:8000/
 
 ## Dados de exemplo e consultas SQL
 
-A fixture `blog/fixtures/seed.json` cria 9 posts, 7 categorias e 17 comentários. Os comentários são de três usuários de teste, Fulano, Sicrano e Beltrano, que não têm senha utilizável.
+A fixture `blog/fixtures/seed.json` cria 10 posts, 7 categorias e 19 comentários. Os comentários são de três usuários de teste, Fulano, Sicrano e Beltrano, que não têm senha utilizável.
 
 | Post | Categorias | Comentários |
 |---|---|---|
@@ -73,6 +73,7 @@ A fixture `blog/fixtures/seed.json` cria 9 posts, 7 categorias e 17 comentários
 | Filtro de Kalman na prática | Disciplinas, Programação | 2 |
 | Fazendo o site do centro acadêmico | Programação, Gestão estudantil | 2 |
 | Como este blog foi feito | Programação, Disciplinas | 3 |
+| Seis meses na comunicação do Grêmio Politécnico | Gestão estudantil | 2 |
 
 As consultas da parte 4 estão em [`sql/consultas.sql`](sql/consultas.sql). O SQLite guarda as datas em UTC, por isso elas aparecem 3 horas à frente do horário de Brasília.
 
