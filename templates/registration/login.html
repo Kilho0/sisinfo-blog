@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block title %}Entrar{% endblock %}
+
+{% block content %}
+  <p class="eyebrow">Acesso</p>
+  <h1 class="page-title">Entrar</h1>
+  <p class="page-lead">Entre com uma conta criada no administrador para publicar posts e comentar.</p>
+
+  <form class="card form-card" method="post">
+    {% csrf_token %}
+    {% if form.errors %}
+      <div class="form-errors">Usuário ou senha incorretos.</div>
+    {% endif %}
+    <div class="field">
+      <label for="id_username">Usuário</label>
+      <input type="text" id="id_username" name="username" autocomplete="username" required autofocus>
+    </div>
+    <div class="field">
+      <label for="id_password">Senha</label>
+      <input type="password" id="id_password" name="password" autocomplete="current-password" required>
+    </div>
+    <input type="hidden" name="next" value="{{ next }}">
+    <div class="actions">
+      <button class="btn btn-primary" type="submit">Entrar</button>
+    </div>
+  </form>
+{% endblock %}

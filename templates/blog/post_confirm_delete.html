@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block title %}Remover post{% endblock %}
+
+{% block content %}
+  <form class="card confirm-card" method="post">
+    {% csrf_token %}
+    <p class="eyebrow">Confirmação</p>
+    <h1>Remover “{{ post.title }}”?</h1>
+    <p>O post publicado em {{ post.date|date:"d/m/Y" }} será apagado de vez. Esta ação não pode ser desfeita.</p>
+    <div class="actions">
+      <button class="btn btn-danger" type="submit">Sim, remover</button>
+      <a class="btn" href="{% url 'post_detail' post.pk %}">Cancelar</a>
+    </div>
+  </form>
+{% endblock %}

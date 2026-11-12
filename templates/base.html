@@ -1,0 +1,54 @@
+{% load static %}<!doctype html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}Bancada{% endblock %} · Bancada</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap">
+      <a class="brand" href="{% url 'post_list' %}">
+        <span class="brand-mark">Bancada</span>
+        <span class="brand-tag">engenharia na prática</span>
+      </a>
+      <nav class="site-nav" aria-label="Navegação principal">
+        <a href="{% url 'post_list' %}">Posts</a>
+        {% block nav_extra %}{% endblock %}
+        <a class="nav-cta" href="{% url 'post_create' %}">+ Novo post</a>
+        {% if user.is_authenticated %}
+          {% if user.is_staff %}<a href="{% url 'admin:index' %}">Admin</a>{% endif %}
+          <form method="post" action="{% url 'logout' %}">
+            {% csrf_token %}
+            <button type="submit">Sair ({{ user.username }})</button>
+          </form>
+        {% else %}
+          <a href="{% url 'login' %}">Entrar</a>
+        {% endif %}
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="wrap">
+      {% if messages %}
+        <ul class="messages">
+          {% for message in messages %}<li>{{ message }}</li>{% endfor %}
+        </ul>
+      {% endif %}
+      {% block content %}{% endblock %}
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <span>Bancada · portfólio e blog de engenharia mecatrônica</span>
+      <span>PCS3643 · Poli-USP</span>
+    </div>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block title %}{% if post %}Editar post{% else %}Novo post{% endif %}{% endblock %}
+
+{% block content %}
+  <p class="eyebrow">{% if post %}Edição{% else %}Criação{% endif %}</p>
+  <h1 class="page-title">{% if post %}Editar “{{ post.title }}”{% else %}Novo post{% endif %}</h1>
+  <p class="page-lead">O conteúdo é salvo como HTML. Use tags como &lt;p&gt;, &lt;h2&gt;, &lt;ul&gt; e &lt;img&gt; com imagens hospedadas fora do site.</p>
+
+  <form class="card form-card" method="post">
+    {% csrf_token %}
+    <div class="field">
+      <label for="id_title">Título</label>
+      <input type="text" id="id_title" name="title" value="{{ post.title }}">
+    </div>
+    <div class="field">
+      <label for="id_content">Conteúdo (HTML)</label>
+      <textarea id="id_content" name="content" rows="14">{{ post.content }}</textarea>
+    </div>
+    <div class="actions">
+      <button class="btn btn-primary" type="submit">{% if post %}Salvar alterações{% else %}Publicar post{% endif %}</button>
+      <a class="btn" href="{% if post %}{% url 'post_detail' post.pk %}{% else %}{% url 'post_list' %}{% endif %}">Cancelar</a>
+    </div>
+  </form>
+{% endblock %}

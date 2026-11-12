@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block title %}Posts{% endblock %}
+
+{% block content %}
+  <p class="eyebrow">Portfólio e blog</p>
+  <h1 class="page-title">Projetos, oficinas e o que aprendi pelo caminho</h1>
+  <p class="page-lead">Registro dos projetos práticos, eventos e da gestão estudantil que fazem parte da minha formação em Engenharia Mecatrônica.</p>
+
+  {% if post_list %}
+    <ul class="post-list">
+      {% for post in post_list %}
+        <li class="card post-card">
+          <span class="meta">{{ post.date|date:"d \d\e F \d\e Y" }}</span>
+          <h2><a href="{% url 'post_detail' post.pk %}">{{ post.title }}</a></h2>
+          <p>{{ post.content|striptags|truncatewords:32 }}</p>
+        </li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <div class="card empty">
+      <p>Nenhum post publicado ainda.</p>
+      <p><a class="btn btn-primary" href="{% url 'post_create' %}">Escrever o primeiro post</a></p>
+    </div>
+  {% endif %}
+{% endblock %}
