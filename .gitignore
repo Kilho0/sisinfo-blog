@@ -1,0 +1,19 @@
+# Banco de dados local (é entregue à parte no Moodle)
+db.sqlite3
+db.sqlite3-journal
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# Arquivos estáticos coletados para produção
+staticfiles/
+
+# Editores e sistema
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+.env
