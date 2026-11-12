@@ -6,12 +6,14 @@ from .models import Comment, Post
 class PostForm(forms.ModelForm):
     class Meta:
         model = Post
-        fields = ['title', 'content']
+        fields = ['title', 'content', 'categories']
         labels = {
             'title': 'Título',
             'content': 'Conteúdo (HTML)',
+            'categories': 'Categorias',
         }
         widgets = {
+            'categories': forms.CheckboxSelectMultiple(attrs={'class': 'checks'}),
             'title': forms.TextInput(attrs={'placeholder': 'Título do post'}),
             'content': forms.Textarea(attrs={
                 'rows': 14,

@@ -1,4 +1,5 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.db.models import Count
 from django.shortcuts import get_object_or_404
 from django.urls import reverse, reverse_lazy
 from django.views.generic import (
@@ -10,11 +11,14 @@ from django.views.generic import (
 )
 
 from .forms import CommentForm, PostForm
-from .models import Comment, Post
+from .models import Category, Comment, Post
 
 
 class PostListView(ListView):
     model = Post
+
+    def get_queryset(self):
+        return Post.objects.prefetch_related('categories')
 
 
 class PostDetailView(DetailView):
@@ -62,3 +66,26 @@ class CommentCreateView(LoginRequiredMixin, CreateView):
 
     def get_success_url(self):
         return reverse('post_detail', args=[self.post_obj.pk]) + '#comentarios'
+
+
+class CategoryListView(ListView):
+    model = Category
+
+    def get_queryset(self):
+        return Category.objects.annotate(post_count=Count('posts'))
+
+
+class CategoryDetailView(ListView):
+    """Lista os posts de uma categoria reaproveitando o template de posts."""
+
+    template_name = 'blog/post_list.html'
+    context_object_name = 'post_list'
+
+    def get_queryset(self):
+        self.category = get_object_or_404(Category, pk=self.kwargs['pk'])
+        return self.category.posts.prefetch_related('categories')
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['category'] = self.category
+        return context

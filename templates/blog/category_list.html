@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block title %}Categorias{% endblock %}
+
+{% block content %}
+  <p class="eyebrow">Navegar por tema</p>
+  <h1 class="page-title">Categorias</h1>
+  <p class="page-lead">Os posts organizados por assunto. Um post pode estar em mais de uma categoria.</p>
+
+  {% if category_list %}
+    <ul class="category-list">
+      {% for category in category_list %}
+        <li class="card category-card">
+          <h2><a href="{% url 'category_detail' category.pk %}">{{ category.name }}</a></h2>
+          <p>{{ category.description }}</p>
+          <span class="meta">{{ category.post_count }} post{{ category.post_count|pluralize }}</span>
+        </li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p class="card empty">Nenhuma categoria cadastrada. Crie categorias pelo administrador.</p>
+  {% endif %}
+{% endblock %}
