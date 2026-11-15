@@ -5,6 +5,8 @@ services:
     plan: free
     buildCommand: pip install -r requirements.txt && python manage.py collectstatic --noinput
     startCommand: bash start.sh
+    domains:
+      - blog.kilho.com.br
     envVars:
       - key: PYTHON_VERSION
         value: 3.14.6
