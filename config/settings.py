@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'blog',
+    'contas',
 ]
 
 MIDDLEWARE = [
@@ -106,3 +107,23 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 LOGIN_URL = 'login'
 LOGIN_REDIRECT_URL = 'post_list'
 LOGOUT_REDIRECT_URL = 'post_list'
+
+# E-mail (recuperação de senha). Sem configuração, os e-mails aparecem no
+# terminal. Com RESEND_API_KEY, são enviados pela API do Resend; com
+# EMAIL_HOST, pelo SMTP comum (que não funciona no plano gratuito do Render).
+RESEND_API_KEY = os.environ.get('RESEND_API_KEY', '')
+if RESEND_API_KEY:
+    EMAIL_BACKEND = 'contas.email.ResendEmailBackend'
+elif os.environ.get('EMAIL_HOST'):
+    EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+    EMAIL_HOST = os.environ['EMAIL_HOST']
+    EMAIL_PORT = int(os.environ.get('EMAIL_PORT', '587'))
+    EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER', '')
+    EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD', '')
+    EMAIL_USE_TLS = True
+else:
+    EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+DEFAULT_FROM_EMAIL = os.environ.get(
+    'DJANGO_DEFAULT_FROM_EMAIL', 'Arquivo Kilho <nao-responda@kilho.com.br>',
+)
+PASSWORD_RESET_TIMEOUT = 60 * 60 * 3  # o link vale por 3 horas

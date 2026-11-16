@@ -7,7 +7,7 @@
     <header class="post-header">
       <p class="eyebrow"><a href="{% url 'post_list' %}">← Todos os posts</a></p>
       <h1 class="page-title">{{ post.title }}</h1>
-      <span class="meta">Publicado em {{ post.date|date:"d/m/Y \à\s H:i" }}{% if post.author %} por {{ post.author.get_full_name|default:post.author.username }}{% endif %}</span>
+      <span class="meta">Publicado em {{ post.date|date:"d/m/Y \à\s H:i" }}{% if post.author %} por <a href="{% url 'profile_detail' post.author.username %}">{{ post.author.get_full_name|default:post.author.username }}</a>{% endif %}</span>
       {% if post.categories.all %}
         <ul class="tags" aria-label="Categorias">
           {% for cat in post.categories.all %}
@@ -41,7 +41,7 @@
           <li class="card comment">
             <span class="avatar" aria-hidden="true">{{ comment.author.username|first }}</span>
             <div>
-              <span class="comment-author">{{ comment.author.get_full_name|default:comment.author.username }}</span>
+              <a class="comment-author" href="{% url 'profile_detail' comment.author.username %}">{{ comment.author.get_full_name|default:comment.author.username }}</a>
               <span class="meta"> · {{ comment.date|date:"d/m/Y \à\s H:i" }}</span>
               <p>{{ comment.text }}</p>
             </div>

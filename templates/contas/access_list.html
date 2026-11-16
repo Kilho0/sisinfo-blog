@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+
+{% block title %}Acessos{% endblock %}
+
+{% block content %}
+  <p class="eyebrow">Superadmin</p>
+  <h1 class="page-title">Controle de acessos</h1>
+  <p class="page-lead">Veja quem tem conta e defina o nível de cada pessoa.</p>
+
+  <dl class="card roles-legend">
+    <div><dt>Usuário</dt><dd>Comenta, publica posts e edita só os próprios.</dd></div>
+    <div><dt>Admin</dt><dd>Entra no /admin para moderar comentários e cuidar das categorias.</dd></div>
+    <div><dt>Superadmin</dt><dd>Pode tudo: edita e remove qualquer post e controla os acessos.</dd></div>
+  </dl>
+
+  <form class="search" method="get">
+    <input type="search" name="q" value="{{ query }}" placeholder="Buscar por nome, usuário ou e-mail" aria-label="Buscar usuários">
+    <button class="btn" type="submit">Buscar</button>
+    {% if query %}<a class="btn btn-link" href="{% url 'access_list' %}">Limpar</a>{% endif %}
+  </form>
+
+  {% if user_list %}
+    <ul class="access-list">
+      {% for person in user_list %}
+        <li class="card access-row{% if not person.is_active %} is-inactive{% endif %}">
+          <div class="access-who">
+            <a class="comment-author" href="{% url 'profile_detail' person.username %}">{{ person.get_full_name|default:person.username }}</a>
+            <span class="meta">@{{ person.username }}{% if person.email %} · {{ person.email }}{% endif %}</span>
+            <span class="meta">Último acesso: {% if person.last_login %}{{ person.last_login|date:"d/m/Y H:i" }}{% else %}nunca{% endif %}</span>
+          </div>
+          {% if person == user %}
+            <div class="access-form">
+              <span class="badge">Superadmin</span>
+              <span class="meta">É você</span>
+            </div>
+          {% else %}
+            <form class="access-form" method="post" action="{% url 'access_update' person.pk %}">
+              {% csrf_token %}
+              <select name="role" aria-label="Nível de {{ person.username }}">
+                {% for value, label in role_choices %}
+                  <option value="{{ value }}"{% if value == person.role %} selected{% endif %}>{{ label }}</option>
+                {% endfor %}
+              </select>
+              <label class="toggle"><input type="checkbox" name="is_active"{% if person.is_active %} checked{% endif %}> Ativa</label>
+              <button class="btn" type="submit">Salvar</button>
+            </form>
+          {% endif %}
+        </li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p class="card empty">Ninguém encontrado.</p>
+  {% endif %}
+{% endblock %}

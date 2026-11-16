@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block title %}Editar perfil{% endblock %}
+
+{% block content %}
+  <div class="auth">
+    <p class="eyebrow"><a href="{% url 'my_profile' %}">← Meu perfil</a></p>
+    <h1 class="page-title">Editar perfil</h1>
+    <p class="page-lead">Nome, idade e curiosidades aparecem no seu perfil público. O e-mail não.</p>
+
+    <form class="card form-card" method="post" novalidate>
+      {% csrf_token %}
+      {% include 'includes/form_fields.html' %}
+      <div class="actions">
+        <button class="btn btn-primary" type="submit">Salvar perfil</button>
+        <a class="btn" href="{% url 'my_profile' %}">Cancelar</a>
+        <a class="btn btn-link" href="{% url 'password_change' %}">Trocar senha</a>
+      </div>
+    </form>
+  </div>
+{% endblock %}

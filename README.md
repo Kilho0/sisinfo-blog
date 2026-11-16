@@ -15,17 +15,36 @@ Aplicação CRUD em Django feita para a segunda entrega de laboratório da disci
 | Lista de categorias | `/categorias/` | `category_list` |
 | Posts de uma categoria | `/categorias/<id>/` | `category_detail` |
 | Entrar / sair | `/contas/login/`, `/contas/logout/` | `login`, `logout` |
+| Criar conta | `/contas/cadastro/` | `signup` |
+| Esqueci a senha | `/contas/password_reset/` | `password_reset` |
+| Trocar senha | `/contas/password_change/` | `password_change` |
+| Meu perfil / editar perfil | `/perfil/`, `/perfil/editar/` | `my_profile`, `profile_edit` |
+| Perfil público | `/usuarios/<usuário>/` | `profile_detail` |
+| Controle de acessos (superadmin) | `/acessos/` | `access_list` |
 | Administrador | `/admin/` | `admin:index` |
 
-Qualquer pessoa pode ler os posts. Criar posts e comentar exige login. Editar e remover um post só é permitido ao autor dele ou a um superusuário; para os demais, os botões nem aparecem e o acesso direto à URL responde 403. As contas são criadas pelo administrador do Django.
+Qualquer pessoa pode ler os posts e criar uma conta com nome, e-mail, nome de usuário e senha. Criar posts e comentar exige login. Editar e remover um post só é permitido ao autor dele ou a um superadmin; para os demais, os botões nem aparecem e o acesso direto à URL responde 403.
+
+## Contas, perfis e níveis de acesso
+
+Cada pessoa tem um perfil com nome, idade e curiosidades, e a página do perfil lista os posts e comentários dela. O e-mail só aparece para a própria pessoa e serve para recuperar a senha.
+
+| Nível | O que pode fazer |
+|---|---|
+| Usuário | Comenta, publica posts e edita ou remove só os próprios |
+| Admin | Também entra no `/admin/` para moderar comentários e cuidar das categorias |
+| Superadmin | Pode tudo, inclusive editar e remover qualquer post e mudar o nível das outras contas em `/acessos/` |
+
+Na tela de acessos, o superadmin promove ou rebaixa contas e pode desativar uma conta. Ninguém muda o próprio nível, para não ficar trancado para fora.
 
 ## Modelos
 
 - `Post`: `title`, `content` (HTML, exibido com o filtro `safe`), `date` (`DateTimeField`), `author` (quem criou o post) e `categories` (muitos para muitos com `Category`).
 - `Comment`: `post`, `author` (referência a `settings.AUTH_USER_MODEL`), `text` e `date`. Os comentários aparecem do mais recente para o mais antigo.
 - `Category`: `name` e `description`.
+- `Profile` (app `contas`): `user`, `age` e `fun_facts`.
 
-Os três modelos estão registrados no administrador.
+Os modelos estão registrados no administrador.
 
 ## Histórico do repositório
 
@@ -60,7 +79,7 @@ O site fica em http://127.0.0.1:8000 e o administrador em http://127.0.0.1:8000/
 
 ## Dados de exemplo e consultas SQL
 
-A fixture `blog/fixtures/seed.json` cria 10 posts, 7 categorias e 19 comentários. Os comentários são de três usuários de teste, Fulano, Sicrano e Beltrano, que não têm senha utilizável.
+A fixture `blog/fixtures/seed.json` cria 10 posts, 7 categorias e 19 comentários. Os comentários são de três usuários de teste, Fulano, Sicrano e Beltrano, que não têm senha utilizável e já vêm com perfil preenchido.
 
 | Post | Categorias | Comentários |
 |---|---|---|
@@ -86,11 +105,17 @@ O arquivo `render.yaml` descreve o serviço. No Render, escolha **New > Blueprin
 | Variável | Para que serve |
 |---|---|
 | `DJANGO_SUPERUSER_USERNAME` e `DJANGO_SUPERUSER_PASSWORD` | Criam o superusuário a cada inicialização |
+| `DJANGO_SUPERUSER_EMAIL` | E-mail do superusuário, para ele também poder recuperar a senha |
 | `DJANGO_ALLOWED_HOSTS` | Domínios extras separados por vírgula, por exemplo um subdomínio próprio |
+| `RESEND_API_KEY` | Chave da API do Resend, usada para enviar o e-mail de recuperação de senha |
 
 `DJANGO_SECRET_KEY` é gerada pelo próprio Render. O endereço `*.onrender.com` é liberado automaticamente.
 
 O disco do plano gratuito é apagado a cada deploy ou reinício. Por isso o `start.sh` recria o banco e carrega a fixture toda vez que o serviço sobe. O que for criado pelo site no Render some no próximo reinício.
+
+### E-mail
+
+Sem configuração, os e-mails de recuperação de senha aparecem no terminal, o que basta para testar localmente. O plano gratuito do Render bloqueia as portas de SMTP, então em produção o envio é feito pela API HTTP do [Resend](https://resend.com), com um backend próprio em `contas/email.py` que usa só a biblioteca padrão do Python. Basta definir `RESEND_API_KEY` e, se o remetente for outro, `DJANGO_DEFAULT_FROM_EMAIL`. O domínio do remetente precisa estar verificado no Resend.
 
 Os arquivos estáticos são servidos pela view `django.views.static.serve`, para não depender de pacotes externos.
 

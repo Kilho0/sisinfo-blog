@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block title %}Criar conta{% endblock %}
+
+{% block content %}
+  <div class="auth">
+    <p class="eyebrow">Cadastro</p>
+    <h1 class="page-title">Criar conta</h1>
+    <p class="page-lead">Com uma conta você pode comentar, publicar posts e montar o seu perfil.</p>
+
+    <form class="card form-card" method="post" novalidate>
+      {% csrf_token %}
+      {% include 'includes/form_fields.html' %}
+      <div class="actions">
+        <button class="btn btn-primary" type="submit">Criar conta</button>
+      </div>
+    </form>
+
+    <p class="auth-switch">Já tem conta? <a href="{% url 'login' %}">Entrar</a></p>
+  </div>
+{% endblock %}

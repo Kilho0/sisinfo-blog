@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ profile_user.get_full_name|default:profile_user.username }}{% endblock %}
+
+{% block content %}
+  <section class="card profile-card">
+    <span class="avatar avatar-lg" aria-hidden="true">{{ profile_user.username|first }}</span>
+    <div class="profile-main">
+      <p class="eyebrow">Perfil</p>
+      <h1 class="page-title">{{ profile_user.get_full_name|default:profile_user.username }}</h1>
+      <p class="meta">
+        @{{ profile_user.username }}
+        {% if role != 'Usuário' %}<span class="badge">{{ role }}</span>{% endif %}
+        {% if profile.age %} · {{ profile.age }} anos{% endif %}
+        · no site desde {{ profile_user.date_joined|date:"F \d\e Y"|lower }}
+      </p>
+      {% if is_owner %}
+        <p class="meta">E-mail: {{ profile_user.email|default:"nenhum cadastrado" }} <span class="hint">(só você vê)</span></p>
+      {% endif %}
+    </div>
+    {% if is_owner %}
+      <div class="profile-actions">
+        <a class="btn btn-primary" href="{% url 'profile_edit' %}">Editar perfil</a>
+        <a class="btn" href="{% url 'password_change' %}">Trocar senha</a>
+      </div>
+    {% endif %}
+  </section>
+
+  <section class="profile-section">
+    <h2>Curiosidades</h2>
+    {% if profile.fun_facts %}
+      <div class="card prose fun-facts">{{ profile.fun_facts|linebreaks }}</div>
+    {% elif is_owner %}
+      <p class="card empty">Você ainda não contou nada sobre você. <a href="{% url 'profile_edit' %}">Escrever agora</a></p>
+    {% else %}
+      <p class="card empty">Essa pessoa ainda não escreveu nada por aqui.</p>
+    {% endif %}
+  </section>
+
+  <section class="profile-section">
+    <h2>Posts <span class="meta">({{ user_posts|length }})</span></h2>
+    {% if user_posts %}
+      <ul class="post-list">
+        {% for post in user_posts %}
+          <li class="card post-card">
+            <span class="meta">{{ post.date|date:"j \d\e F \d\e Y"|lower }}</span>
+            <h2><a href="{% url 'post_detail' post.pk %}">{{ post.title }}</a></h2>
+            <p>{{ post.content|striptags|truncatewords:24 }}</p>
+          </li>
+        {% endfor %}
+      </ul>
+    {% else %}
+      <p class="card empty">Nenhum post publicado.</p>
+    {% endif %}
+  </section>
+
+  <section class="profile-section">
+    <h2>Comentários <span class="meta">({{ user_comments|length }})</span></h2>
+    {% if user_comments %}
+      <ul class="comment-list">
+        {% for comment in user_comments %}
+          <li class="card comment comment-ref">
+            <div>
+              <span class="meta">Em <a href="{% url 'post_detail' comment.post.pk %}#comentarios">{{ comment.post.title }}</a> · {{ comment.date|date:"d/m/Y \à\s H:i" }}</span>
+              <p>{{ comment.text }}</p>
+            </div>
+          </li>
+        {% endfor %}
+      </ul>
+    {% else %}
+      <p class="card empty">Nenhum comentário ainda.</p>
+    {% endif %}
+  </section>
+{% endblock %}

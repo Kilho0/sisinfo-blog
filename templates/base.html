@@ -19,14 +19,17 @@
         <a href="{% url 'post_list' %}">Posts</a>
         <a href="{% url 'category_list' %}">Categorias</a>
         {% if user.is_authenticated %}
-          <a class="nav-cta" href="{% url 'post_create' %}">+ Novo post</a>
+          <a href="{% url 'my_profile' %}">Perfil</a>
+          {% if user.is_superuser %}<a href="{% url 'access_list' %}">Acessos</a>{% endif %}
           {% if user.is_staff %}<a href="{% url 'admin:index' %}">Admin</a>{% endif %}
+          <a class="nav-cta" href="{% url 'post_create' %}">+ Novo post</a>
           <form method="post" action="{% url 'logout' %}">
             {% csrf_token %}
             <button type="submit">Sair ({{ user.username }})</button>
           </form>
         {% else %}
           <a href="{% url 'login' %}">Entrar</a>
+          <a class="nav-cta" href="{% url 'signup' %}">Criar conta</a>
         {% endif %}
       </nav>
     </div>

@@ -414,5 +414,32 @@
       "text": "O Drive do Grêmio salvou minha vida em Cálculo II. Obrigado a quem organizou!",
       "date": "2026-06-19T10:44:00-03:00"
     }
+  },
+  {
+    "model": "contas.profile",
+    "pk": 1,
+    "fields": {
+      "user": 101,
+      "age": 22,
+      "fun_facts": "Coleciona canecas de eventos da Poli e jura que o café do prédio da Mecânica é o melhor do campus."
+    }
+  },
+  {
+    "model": "contas.profile",
+    "pk": 2,
+    "fields": {
+      "user": 102,
+      "age": 24,
+      "fun_facts": "Já montou três carrinhos de rolimã e não terminou nenhuma descida sem perder uma roda."
+    }
+  },
+  {
+    "model": "contas.profile",
+    "pk": 3,
+    "fields": {
+      "user": 103,
+      "age": 21,
+      "fun_facts": "Lê o enunciado inteiro antes de começar a lista. Sim, é verdade."
+    }
   }
 ]
