@@ -127,3 +127,17 @@ DEFAULT_FROM_EMAIL = os.environ.get(
     'DJANGO_DEFAULT_FROM_EMAIL', 'Arquivo Kilho <nao-responda@kilho.com.br>',
 )
 PASSWORD_RESET_TIMEOUT = 60 * 60 * 3  # o link vale por 3 horas
+
+# Mostra nos logs do Render o resultado dos envios de e-mail. Sem isso, o
+# Django não registra em produção as falhas do e-mail de recuperação.
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'console': {'class': 'logging.StreamHandler'},
+    },
+    'loggers': {
+        'contas': {'handlers': ['console'], 'level': 'INFO', 'propagate': False},
+        'django.contrib.auth': {'handlers': ['console'], 'level': 'WARNING'},
+    },
+}

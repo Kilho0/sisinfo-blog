@@ -42,10 +42,15 @@ class ResendEmailBackend(BaseEmailBackend):
                 method='POST',
             )
             try:
-                with urllib.request.urlopen(request, timeout=15):
-                    sent += 1
-            except urllib.error.URLError as error:
-                logger.error('Falha ao enviar e-mail pelo Resend: %s', error)
+                with urllib.request.urlopen(request, timeout=15) as response:
+                    resend_id = json.loads(response.read() or b'{}').get('id')
+                logger.info('E-mail enviado pelo Resend (id %s)', resend_id)
+                sent += 1
+            except (urllib.error.URLError, TimeoutError) as error:
+                detail = ''
+                if isinstance(error, urllib.error.HTTPError):
+                    detail = error.read().decode(errors='replace')[:300]
+                logger.error('Falha ao enviar e-mail pelo Resend: %s %s', error, detail)
                 if not self.fail_silently:
                     raise
         return sent
